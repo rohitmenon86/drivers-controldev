@@ -8,6 +8,7 @@
 #include <string.h>
 #include <math.h>
 #include <assert.h>
+#include <iostream>
 
 #define PATH_BUFFER_SIZE (1024)
 
@@ -72,7 +73,8 @@ bool ConnexionHID::init(){
       //LOG_DEBUG("Spacemouse: vendor %04hx product %04hx version %04hx\n",
       //        device_info.vendor, device_info.product, device_info.version);
       if((device_info.vendor == LOGITECH_VENDOR_ID) && 
-         (device_info.product == LOGITECH_SPACE_NAVIGATOR_DEVICE_ID)) {
+	(device_info.product == SPACE_PILOT_PRO_DEVICE_ID)) {
+	std::cout<<"Identified SPACE PILOT PRO"<<std::endl;
         /* BINGO!!! this is it! */
         break;
       }
@@ -153,6 +155,8 @@ void ConnexionHID::getValue(struct connexionValues &coordinates, struct connexio
   /* handle input events sequentially */
   for(i = 0; i < eventCnt; ++i) {
     if(EV_KEY == events[i].type) {
+      std::cout<<"Event code= "<<std::hex<<events[i].code<<std::endl;
+      std::cout<<"Event value= "<<events[i].value<<std::endl;
       switch(events[i].code) {
       case BTN_0:
         rawValues.button1 = events[i].value;

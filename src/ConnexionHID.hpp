@@ -6,6 +6,7 @@
 #define LOGITECH_SPACE_PILOT_DEVICE_ID     0xc625
 #define LOGITECH_SPACE_NAVIGATOR_DEVICE_ID 0xc626
 #define LOGITECH_SPACE_EXPLORER_DEVICE_ID  0xc627
+#define SPACE_PILOT_PRO_DEVICE_ID          0xc629
 
 namespace controldev{
 
@@ -73,6 +74,8 @@ protected:
   double t_scale;
 };
 
-#endif
+
 
 };
+
+#endif
